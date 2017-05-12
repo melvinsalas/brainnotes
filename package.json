@@ -1,0 +1,9 @@
+{
+  "name": "brainnotes",
+  "version": "1.0.0",
+  "description": "Evernote Clone React Application",
+  "main": "src/js/index.js",
+  "repository": "https://github.com/melvinsalas/brainnotes",
+  "author": "Melvin Salas, Daniel Morales",
+  "license": "MIT"
+}
