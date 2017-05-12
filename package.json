@@ -5,5 +5,9 @@
   "main": "src/js/index.js",
   "repository": "https://github.com/melvinsalas/brainnotes",
   "author": "Melvin Salas, Daniel Morales",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "webpack": "^2.5.1"
+  }
 }
