@@ -1,7 +1,14 @@
-$primary-color:#009688;
-$font-color: #FFFFFF;
+// helpers load first
+@import "helpers/variables";
 
-body {
-  background-color: $primary-color;
-  color: $font-color;
-}
+// load vendor libs, but just what you need
+@import "vendor/bootstrap-custom";
+// @import "vendor/materialdesignicons-custom";
+
+// load components
+// @import "components/buttons";
+// @import "components/navbar";
+// @import "components/sidebar";
+
+// load components
+// @import "pages/home";

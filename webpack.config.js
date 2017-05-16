@@ -31,6 +31,13 @@ module.exports = {
       },
       {
         test: /\.scss$/,
+
+        // "include" is commonly used to match the directories
+        include: [
+          path.resolve(__dirname, "src/scss"),
+          path.resolve(__dirname, "node_modules/bootstrap-sass/assets/stylesheets"),
+        ],
+
         use: [
           'style-loader',
           'css-loader',
