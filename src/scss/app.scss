@@ -1,14 +1,14 @@
 // helpers load first
-@import "helpers/variables";
+@import "helpers/variables.scss";
 
 // load vendor libs, but just what you need
 // @import "vendor/bootstrap-custom";
 // @import "vendor/materialdesignicons-custom";
 
 // load components
-// @import "components/buttons";
-// @import "components/navbar";
-// @import "components/sidebar";
+@import "components/buttons";
+@import "components/navbar";
+@import "components/sidebar";
 
 // load components
-// @import "pages/home";
+@import "pages/home";
