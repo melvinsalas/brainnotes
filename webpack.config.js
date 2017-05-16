@@ -31,20 +31,25 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-
-        // "include" is commonly used to match the directories
-        include: [
-          path.resolve(__dirname, "src/scss"),
-          path.resolve(__dirname, "node_modules/bootstrap-sass/assets/stylesheets"),
-        ],
-
         use: [
           'style-loader',
           'css-loader',
           'postcss-loader',
           'sass-loader',
         ],
+      }, 
+      {
+        test: /\.woff$/,
+        loader: "url-loader?limit=10000&mimetype=application/font-woff&name=[path][name].[ext]"
       },
+      {
+        test: /\.woff2$/,
+        loader: "url-loader?limit=10000&mimetype=application/font-woff2&name=[path][name].[ext]"
+      },
+      {
+        test: /\.(eot|ttf|svg|gif|png)$/,
+        loader: "file-loader"
+      }  
     ],
   },
   plugins: [
