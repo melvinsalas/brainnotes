@@ -1,8 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-const NavTop = React.createClass({
-  render: function(){
+class NavTop extends React.Component {
+  state = { comments: [] };
+  render (){
     return (
       <nav className="navbar navbar-inverse">
         <div className="container-fluid">
@@ -44,6 +45,6 @@ const NavTop = React.createClass({
       </nav>
       );
     }
-  }); 
+  }; 
 
   export default NavTop;

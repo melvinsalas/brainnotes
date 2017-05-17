@@ -1,27 +1,41 @@
 import React from 'react';
 import { render } from 'react-dom';
+import NotesSection from './section';
 
-const MainContainer = React.createClass({
-  render: function(){
+class MainContainer extends React.Component {
+  state = {
+    activeSection: 'Notes',
+    sections: [
+      {
+        id: 'section-notes',
+        sectionTitle: 'Notes',
+        sectionPanels: [
+          {
+            title: 'First Title',
+            content: 'First Content'
+          },
+          {
+            title: 'Second Title',
+            content: 'Second Content'
+          }
+        ]
+      }
+    ]
+  };
+
+  log () {
+    console.log('POTATO');
+  }
+
+  render () {
     return (
       <main className="main">
         <div className="container-fluid">
           <div className="row">
             <div id="section-side" className="col-sm-3 transition section">
               <div className="row">
-                <div id="section-notes" className="col-md-12 transition">
-                  <div className="panel panel-default">
-                    <div className="panel-heading clearfix">
-                      <h4 className="panel-title pull-left">Notes</h4>
-                      <div className="btn-group pull-right">
-                        <a href="#" id="btn-new-notes" className="btn btn-success"><i className="mdi mdi-plus"> </i></a>
-                      </div>
-                    </div>
-                    <div id="holder-notes" className="panel-body section-notes">
+                {this.state.sections.filter(((section)=>section.sectionTitle == this.state.activeSection), this).map((section)=><NotesSection key={section.id} {...section} log={this.log}/>)}
 
-                    </div>
-                  </div>
-                </div>
                 <div id="section-notebooks" className="col-md-12 hide2 transition">
                   <div className="panel panel-default">
                     <div className="panel-heading clearfix">
@@ -100,9 +114,9 @@ const MainContainer = React.createClass({
                       <a href="#" data-toggle="tooltip" data-placement="bottom" title="Delete" id="btn-delete-notes" className="btn btn-default btn-danger"><i className="mdi mdi-delete"> </i></a>
                     </div>
                     <a id="btn-back" href="#" className="btn btn-default pull-left hidden-lg hidden-md hidden-sm"><i className="mdi mdi-chevron-left"></i></a>
-                    <h4 id="display-note-title" className="panel-title pull-left heading-editable" contenteditable="false"> </h4>
+                    <h4 id="display-note-title" className="panel-title pull-left heading-editable" contentEditable="false"> </h4>
                   </div>
-                <div id="display-note-content" className="panel-body section-display body-editable" contenteditable="false"> </div>
+                <div id="display-note-content" className="panel-body section-display body-editable" contentEditable="false"> </div>
                 <div className="panel-footer">
                   <i className="mdi mdi-tag"></i>
                   <span>Tags: </span>
@@ -121,6 +135,6 @@ const MainContainer = React.createClass({
       </main>
       );
     }
-  }); 
+  }; 
 
   export default MainContainer;

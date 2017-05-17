@@ -1,8 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-const NavSide = React.createClass({
-  render: function(){
+class NavSide extends React.Component {
+  state = {comments: []};
+  render () {
     return (
       <nav className="sidebar">
         <ul>
@@ -13,6 +14,6 @@ const NavSide = React.createClass({
       </nav>
       );
     }
-  }); 
+  }; 
 
   export default NavSide;

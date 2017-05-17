@@ -5,6 +5,7 @@ import NavTop from './js/navTop';
 import NavSide from './js/navSide';
 import MainContainer from './js/main';
 
+
 import '../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss';
 import '../node_modules/mdi/scss/materialdesignicons.scss';
 import './scss/app.scss';
@@ -14,8 +15,6 @@ const App = () => (
     <NavTop/>
     <NavSide/>
     <MainContainer/>
-    <footer>
-    </footer>
   </div>
 );
 
