@@ -2,6 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import SectionPanel from './sectionPanel';
+import SectionBooks from './sectionBooks';
 
 class NotesSection extends React.Component {
   constructor () {
@@ -22,17 +23,15 @@ class NotesSection extends React.Component {
                     </div>
                 </div>
                 <div id="holder-notes" className="panel-body section-notes">
-                    {
-                        sectionPanels.map((panel)=>{
-                            return (
-                                <SectionPanel 
-                                    key={panel.id}
-                                    {...panel}
-                                />
-                                )
-                            }
+                    {sectionPanels.map((panel)=>{
+                        return (
+                            <SectionPanel 
+                                key={panel.id}
+                                section = { sectionTitle }
+                                {...panel}
+                            />
                         )
-                    }
+                    })}
                 </div>
             </div>
         </div>
