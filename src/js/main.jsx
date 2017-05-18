@@ -1,40 +1,36 @@
 import React from 'react';
 import { render } from 'react-dom';
+
 import NotesSection from './section';
 
-class MainContainer extends React.Component {
-  state = {
-    activeSection: 'Notes',
-    sections: [
-      {
-        id: 'section-notes',
-        sectionTitle: 'Notes',
-        sectionPanels: [
-          {
-            title: 'First Title',
-            content: 'First Content'
-          },
-          {
-            title: 'Second Title',
-            content: 'Second Content'
-          }
-        ]
-      }
-    ]
-  };
+//const {string} = React.PropTypes;
 
-  log () {
-    console.log('POTATO');
+class MainContainer extends React.Component {
+  constructor () {
+    super();
+    this.state = {
+      
+    }
   }
 
   render () {
+    const { activeSection, sections } = this.props;
     return (
       <main className="main">
         <div className="container-fluid">
           <div className="row">
             <div id="section-side" className="col-sm-3 transition section">
               <div className="row">
-                {this.state.sections.filter(((section)=>section.sectionTitle == this.state.activeSection), this).map((section)=><NotesSection key={section.id} {...section} log={this.log}/>)}
+                {
+                  sections.filter((section)=>section.id == activeSection)
+                  .map((section)=>{
+                    return (
+                      <NotesSection 
+                        key={section.id}
+                        {...section}
+                    />)}
+                  )
+                }
 
                 <div id="section-notebooks" className="col-md-12 hide2 transition">
                   <div className="panel panel-default">
@@ -133,8 +129,12 @@ class MainContainer extends React.Component {
 
         </div>
       </main>
-      );
-    }
-  }; 
+    );
+  }
+}; 
 
-  export default MainContainer;
+MainContainer.propTypes = {
+  
+}
+
+export default MainContainer;

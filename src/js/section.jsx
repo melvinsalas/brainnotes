@@ -2,11 +2,16 @@ import React from 'react';
 import { render } from 'react-dom';
 
 class NotesSection extends React.Component {
-  state = { comments: [] };
+  constructor () {
+    super();
+    this.state = {
+    }
+  }
+
   render () {
+    const { id } = this.props;
     return (
-        <div onClick={this.props.log} key={this.props.id} id={this.props.id} className="col-md-12 transition">
-            {console.log(this.props)}
+        <div id={id} className="col-md-12 transition">
             <div className="panel panel-default">
                 <div className="panel-heading clearfix">
                     <h4 className="panel-title pull-left">Notes</h4>
