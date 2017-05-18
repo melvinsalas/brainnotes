@@ -16,12 +16,14 @@ class AppContainer extends React.Component {
           sectionTitle: 'Notes',
           sectionPanels: [
             {
-              title: 'First Title',
-              content: 'First Content'
+              id: '0',
+              title: 'First Notes Title',
+              content: 'First Notes Content'
             },
             {
-              title: 'Second Title',
-              content: 'Second Content'
+              id: '1',
+              title: 'Second Notes Title',
+              content: 'Second Notes Content'
             }
           ]
         },
@@ -30,12 +32,14 @@ class AppContainer extends React.Component {
           sectionTitle: 'NoteBooks',
           sectionPanels: [
             {
-              title: 'First Title',
-              content: 'First Content'
+              id: '0',
+              title: 'First NoteBooks Title',
+              content: 'First NoteBooks Content'
             },
             {
-              title: 'Second Title',
-              content: 'Second Content'
+              id: '1',
+              title: 'Second NoteBooks Title',
+              content: 'Second NoteBooks Content'
             }
           ]
         },
@@ -44,12 +48,14 @@ class AppContainer extends React.Component {
           sectionTitle: 'Tags',
           sectionPanels: [
             {
-              title: 'First Title',
-              content: 'First Content'
+              id: '0',
+              title: 'First Tags Title',
+              content: 'First Tags Content'
             },
             {
-              title: 'Second Title',
-              content: 'Second Content'
+              id: '1',
+              title: 'Second Tags Title',
+              content: 'Second Tags Content'
             }
           ]
         }
@@ -59,11 +65,14 @@ class AppContainer extends React.Component {
   }
 
   navClick (e) {
-    console.log("Clicked Nav");
-    console.log(e.target.dataSection);
-    setState({
-      activeSection: e.target.dataSection
-    });
+    if(e.currentTarget.nodeName == "LI") {
+      e.stopPropagation();
+      this.setState({
+        activeSection: e.currentTarget.dataset.section
+      });
+    };
+    
+    
   }
 
    render () {
@@ -79,7 +88,12 @@ class AppContainer extends React.Component {
           btnNotebooksTarget={notebookSectionId}
           btnTagsTarget={tagSectionId}
         />
-        <NavSide/>
+        <NavSide
+          navClick={navClick}
+          btnNotesTarget={noteSectionId}
+          btnNotebooksTarget={notebookSectionId}
+          btnTagsTarget={tagSectionId}
+        />
         <MainContainer
           activeSection={activeSection}
           sections={sections}
