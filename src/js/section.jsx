@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 
 import SectionPanel from './sectionPanel';
 
-class NotesSection extends React.Component {
+class Section extends React.Component {
   constructor () {
     super();
     this.state = {
@@ -11,9 +11,10 @@ class NotesSection extends React.Component {
   }
 
   render () {
-    const { id, sectionTitle, sectionPanels } = this.props;
+    const { id, sectionTitle, sectionPanels, displayContent, display } = this.props;
+    console.log(display);
     return (
-        <div id={id} className="col-md-12 transition">
+        <div id={id} className={"col-md-12 transition " + ((display)?"hide2":"")}>
             <div className="panel panel-default">
                 <div className="panel-heading clearfix">
                     <h4 className="panel-title pull-left">{sectionTitle}</h4>
@@ -26,8 +27,9 @@ class NotesSection extends React.Component {
                         return (
                             <SectionPanel 
                                 key={panel.id}
-                                section = { sectionTitle }
-                                {...panel}
+                                sectionTitle = { sectionTitle }
+                                displayContent={displayContent}
+                                panel={panel}
                             />
                         )
                     })}
@@ -38,4 +40,4 @@ class NotesSection extends React.Component {
     }
   }
 
-  export default NotesSection;
+  export default Section;

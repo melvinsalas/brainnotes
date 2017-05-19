@@ -9,11 +9,13 @@ class SectionPanel extends React.Component {
   }
 
   render () {
-    const { title, section } = this.props;
+    const { panel, sectionTitle, displayContent } = this.props,
+          {title} = panel;
     let value = null;
-    switch (section) {
+
+    switch (sectionTitle) {
       case 'Notes':
-        value = <div className="note rounded"> { title } </div>;
+        value = <div onClick={()=>{displayContent(panel)}} className="note rounded"> { title } </div>;
         break;
       default:
         value = <div className="panel panel-default"><div className="panel-body"> { title } </div></div>;

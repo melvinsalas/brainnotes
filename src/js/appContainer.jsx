@@ -11,9 +11,11 @@ class AppContainer extends React.Component {
     super();
     this.state = {
       activeSection: 'section-notes',
-      sections: [
-        {
+      activeNote: null,
+      sections: {
+        noteSection:{
           id: 'section-notes',
+          displayContent: this.setActiveNote.bind(this),
           sectionTitle: 'Notes',
           sectionPanels: [
             {
@@ -28,7 +30,7 @@ class AppContainer extends React.Component {
             }
           ]
         },
-        {
+        notebookSection:{
           id: 'section-notebooks',
           sectionTitle: 'NoteBooks',
           sectionPanels: [
@@ -44,7 +46,7 @@ class AppContainer extends React.Component {
             }
           ]
         },
-        {
+        tagSection:{
           id: 'section-tags',
           sectionTitle: 'Tags',
           sectionPanels: [
@@ -60,27 +62,32 @@ class AppContainer extends React.Component {
             }
           ]
         }
-      ],
+      },
       navClick: this.navClick.bind(this)
     }
   }
 
   navClick (e) {
-    if(e.currentTarget.nodeName == "LI") {
+    if(e.currentTarget.nodeName == "A") {
       e.stopPropagation();
       this.setState({
         activeSection: e.currentTarget.dataset.section
       });
-    };
-    
-    
+    };  
+  }
+
+  setActiveNote(pNote) {
+    console.log(JSON.stringify(pNote, null, 4));
+    this.setState({
+      activeNote: pNote
+    });
   }
 
    render () {
-     const { sections, activeSection, navClick } = this.state,
-           noteSectionId = sections[0].id,
-           notebookSectionId = sections[1].id,
-           tagSectionId = sections[2].id;
+     const { sections, activeSection, activeNote, navClick } = this.state,
+           noteSectionId = sections.noteSection.id,
+           notebookSectionId = sections.notebookSection.id,
+           tagSectionId = sections.tagSection.id;
     return (
       <div>
         <NavTop
@@ -98,6 +105,7 @@ class AppContainer extends React.Component {
         />
         <MainContainer
           activeSection={activeSection}
+          activeNote={activeNote}
           sections={sections}
         />
       </div>
