@@ -9,9 +9,10 @@ class SectionPanel extends React.Component {
   }
 
   render () {
-    const { title } = this.props;
+    const panelObject = this.props.panelObject;
+    const { title, displayContent } = panelObject;
     return (
-        <div className="panel panel-default">
+        <div onClick={()=>displayContent(panelObject)} className="panel panel-default">
             <div className="panel-body">{title}</div>
         </div>
       );

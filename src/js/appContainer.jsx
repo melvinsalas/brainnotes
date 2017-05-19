@@ -10,9 +10,11 @@ class AppContainer extends React.Component {
     super();
     this.state = {
       activeSection: 'section-notes',
+      activeNote: null,
       sections: [
         {
           id: 'section-notes',
+          displayContent: this.setActiveNote.bind(this),
           sectionTitle: 'Notes',
           sectionPanels: [
             {
@@ -65,18 +67,22 @@ class AppContainer extends React.Component {
   }
 
   navClick (e) {
-    if(e.currentTarget.nodeName == "LI") {
+    if(e.currentTarget.nodeName == "A") {
       e.stopPropagation();
       this.setState({
         activeSection: e.currentTarget.dataset.section
       });
-    };
-    
-    
+    };  
+  }
+
+  setActiveNote(pNote) {
+    this.setState({
+      activeNote: pNote
+    });
   }
 
    render () {
-     const { sections, activeSection, navClick } = this.state,
+     const { sections, activeSection, activeNote, navClick } = this.state,
            noteSectionId = sections[0].id,
            notebookSectionId = sections[1].id,
            tagSectionId = sections[2].id;
@@ -96,6 +102,7 @@ class AppContainer extends React.Component {
         />
         <MainContainer
           activeSection={activeSection}
+          activeNote={activeNote}
           sections={sections}
         />
       </div>

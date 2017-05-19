@@ -13,9 +13,9 @@ class NavSide extends React.Component {
     return (
       <nav className="sidebar">
         <ul>
-          <li onClick={navClick} data-section={btnNotesTarget}><a id="btn-notes" href="#"><i className="mdi mdi-note" data-toggle="tooltip" data-placement="right" title="Notes"></i></a></li>
-          <li onClick={navClick} data-section={btnNotebooksTarget}><a id="btn-notebooks" href="#"><i className="mdi mdi-book" data-toggle="tooltip" data-placement="right" title="Notebooks"></i></a></li>
-          <li onClick={navClick} data-section={btnTagsTarget}><a id="btn-tags" href="#"><i className="mdi mdi-tag" data-toggle="tooltip" data-placement="right" title="Tags"></i></a></li>
+          <li><a id="btn-notes" href="#" onClick={navClick} data-section={btnNotesTarget}><i className="mdi mdi-note" data-toggle="tooltip" data-placement="right" title="Notes"></i></a></li>
+          <li><a id="btn-notebooks" href="#" onClick={navClick} data-section={btnNotebooksTarget}><i className="mdi mdi-book" data-toggle="tooltip" data-placement="right" title="Notebooks"></i></a></li>
+          <li><a id="btn-tags" href="#" onClick={navClick} data-section={btnTagsTarget}><i className="mdi mdi-tag" data-toggle="tooltip" data-placement="right" title="Tags"></i></a></li>
         </ul>
       </nav>
       );

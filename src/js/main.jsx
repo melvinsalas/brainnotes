@@ -14,7 +14,7 @@ class MainContainer extends React.Component {
   }
 
   render () {
-    const { activeSection, sections } = this.props;
+    const { activeSection, activeNote, sections } = this.props;
     return (
       <main className="main">
         <div className="container-fluid">
@@ -31,70 +31,6 @@ class MainContainer extends React.Component {
                     />)}
                   )
                 }
-
-                <div id="section-notebooks" className="col-md-12 hide2 transition">
-                  <div className="panel panel-default">
-                    <div className="panel-heading clearfix">
-                      <h4 className="panel-title pull-left">Notebooks</h4>
-                      <div className="btn-group pull-right">
-                        <a href="#" className="btn btn-success"><i className="mdi mdi-plus"> </i></a>
-                      </div>
-                    </div>
-                    <div className="panel-body section-notes">
-                      <div className="panel panel-default">
-                        <div className="panel-body">Notebook 1</div>
-                      </div>
-                      <div className="panel panel-default">
-                        <div className="panel-body">Notebook 2</div>
-                      </div>
-                      <div className="panel panel-default">
-                        <div className="panel-body">Notebook 3</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div id="section-tags" className="col-md-12 hide2 transition">
-                  <div className="panel panel-default">
-                    <div className="panel-heading clearfix">
-                      <h4 className="panel-title pull-left">Tags</h4>
-                      <div className="btn-group pull-right">
-                        <a href="#" className="btn btn-success"><i className="mdi mdi-plus"> </i></a>
-                      </div>
-                    </div>
-                    <div className="panel-body section-notes">
-                      <div className="panel panel-default">
-                        <div className="panel-body">
-                          <span className="label label-default"><i className="mdi mdi-tag"></i></span> Default
-                        </div>
-                      </div>
-                      <div className="panel panel-default">
-                        <div className="panel-body">
-                          <span className="label label-primary"><i className="mdi mdi-tag"></i></span> Primary
-                        </div>
-                      </div>
-                      <div className="panel panel-default">
-                        <div className="panel-body">
-                          <span className="label label-info"><i className="mdi mdi-tag"></i></span> Info
-                        </div>
-                      </div>
-                      <div className="panel panel-default">
-                        <div className="panel-body">
-                          <span className="label label-warning"><i className="mdi mdi-tag"></i></span> Warning
-                        </div>
-                      </div>
-                      <div className="panel panel-default">
-                        <div className="panel-body">
-                          <span className="label label-danger"><i className="mdi mdi-tag"></i></span> Danger
-                        </div>
-                      </div>
-                      <div className="panel panel-default">
-                        <div className="panel-body">
-                          <span className="label label-success"><i className="mdi mdi-tag"></i></span> Success
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -110,7 +46,11 @@ class MainContainer extends React.Component {
                       <a href="#" data-toggle="tooltip" data-placement="bottom" title="Delete" id="btn-delete-notes" className="btn btn-default btn-danger"><i className="mdi mdi-delete"> </i></a>
                     </div>
                     <a id="btn-back" href="#" className="btn btn-default pull-left hidden-lg hidden-md hidden-sm"><i className="mdi mdi-chevron-left"></i></a>
-                    <h4 id="display-note-title" className="panel-title pull-left heading-editable" contentEditable="false"> </h4>
+                    <h4 id="display-note-title" className="panel-title pull-left heading-editable" contentEditable="false">
+                      {
+                        (!!activeNote) ? activeNote.title : ' '
+                      }
+                    </h4>
                   </div>
                 <div id="display-note-content" className="panel-body section-display body-editable" contentEditable="false"> </div>
                 <div className="panel-footer">

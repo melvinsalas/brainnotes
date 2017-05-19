@@ -27,7 +27,7 @@ class NotesSection extends React.Component {
                             return (
                                 <SectionPanel 
                                     key={panel.id}
-                                    {...panel}
+                                    panelObject={panel}
                                 />
                                 )
                             }
