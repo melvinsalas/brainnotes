@@ -6,13 +6,22 @@ import NavSide from './navSide';
 import MainContainer from './main';
 
 class AppContainer extends React.Component {
-  constructor () {
+  constructor() {
     super();
     this.state = {
       activeSection: 'section-notes',
       activeNote: null,
+      navSettings: {
+        navClick: this.navClick.bind(this)
+      },
+      displaySettings: {
+        editable: false,
+        startEdit: this.startEdit.bind(this),
+        saveEdit: this.saveEdit.bind(this),
+        cancelEdit: this.cancelEdit.bind(this)
+      },
       sections: {
-        noteSection:{
+        noteSection: {
           id: 'section-notes',
           displayContent: this.setActiveNote.bind(this),
           sectionTitle: 'Notes',
@@ -20,16 +29,18 @@ class AppContainer extends React.Component {
             {
               id: '0',
               title: 'First Notes Title',
-              content: 'First Notes Content'
+              content: 'First Notes Content',
+              tags: []
             },
             {
               id: '1',
               title: 'Second Notes Title',
-              content: 'Second Notes Content'
+              content: 'Second Notes Content',
+              tags: []
             }
           ]
         },
-        notebookSection:{
+        notebookSection: {
           id: 'section-notebooks',
           sectionTitle: 'NoteBooks',
           sectionPanels: [
@@ -45,7 +56,7 @@ class AppContainer extends React.Component {
             }
           ]
         },
-        tagSection:{
+        tagSection: {
           id: 'section-tags',
           sectionTitle: 'Tags',
           sectionPanels: [
@@ -62,17 +73,16 @@ class AppContainer extends React.Component {
           ]
         }
       },
-      navClick: this.navClick.bind(this)
     }
   }
 
-  navClick (e) {
-    if(e.currentTarget.nodeName == "A") {
+  navClick(e) {
+    if (e.currentTarget.nodeName == "A") {
       e.stopPropagation();
       this.setState({
         activeSection: e.currentTarget.dataset.section
       });
-    };  
+    };
   }
 
   setActiveNote(pNote) {
@@ -82,11 +92,27 @@ class AppContainer extends React.Component {
     });
   }
 
-   render () {
-     const { sections, activeSection, activeNote, navClick } = this.state,
-           noteSectionId = sections.noteSection.id,
-           notebookSectionId = sections.notebookSection.id,
-           tagSectionId = sections.tagSection.id;
+   startEdit() {
+    if(!!this.state.activeNote) {
+      this.state.displaySettings.editable = true;
+      this.forceUpdate();
+    }
+  }
+
+  saveEdit() {
+    console.log("saveEdit");
+  }
+
+  cancelEdit() {
+    console.log("cancelEdit");
+  }
+
+  render() {
+    const { navSettings, displaySettings, sections, activeSection, activeNote } = this.state,
+      {navClick} = navSettings,
+      noteSectionId = sections.noteSection.id,
+      notebookSectionId = sections.notebookSection.id,
+      tagSectionId = sections.tagSection.id;
     return (
       <div>
         <NavTop
@@ -105,14 +131,15 @@ class AppContainer extends React.Component {
           activeSection={activeSection}
           activeNote={activeNote}
           sections={sections}
+          displaySettings={displaySettings}
         />
       </div>
     );
   }
-}; 
+};
 
 AppContainer.propTypes = {
-  
+
 }
 
 export default AppContainer;
