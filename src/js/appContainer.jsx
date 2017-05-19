@@ -11,8 +11,8 @@ class AppContainer extends React.Component {
     this.state = {
       activeSection: 'section-notes',
       activeNote: null,
-      sections: [
-        {
+      sections: {
+        noteSection:{
           id: 'section-notes',
           displayContent: this.setActiveNote.bind(this),
           sectionTitle: 'Notes',
@@ -29,7 +29,7 @@ class AppContainer extends React.Component {
             }
           ]
         },
-        {
+        notebookSection:{
           id: 'section-notebooks',
           sectionTitle: 'NoteBooks',
           sectionPanels: [
@@ -45,7 +45,7 @@ class AppContainer extends React.Component {
             }
           ]
         },
-        {
+        tagSection:{
           id: 'section-tags',
           sectionTitle: 'Tags',
           sectionPanels: [
@@ -61,7 +61,7 @@ class AppContainer extends React.Component {
             }
           ]
         }
-      ],
+      },
       navClick: this.navClick.bind(this)
     }
   }
@@ -76,6 +76,7 @@ class AppContainer extends React.Component {
   }
 
   setActiveNote(pNote) {
+    console.log(JSON.stringify(pNote, null, 4));
     this.setState({
       activeNote: pNote
     });
@@ -83,9 +84,9 @@ class AppContainer extends React.Component {
 
    render () {
      const { sections, activeSection, activeNote, navClick } = this.state,
-           noteSectionId = sections[0].id,
-           notebookSectionId = sections[1].id,
-           tagSectionId = sections[2].id;
+           noteSectionId = sections.noteSection.id,
+           notebookSectionId = sections.notebookSection.id,
+           tagSectionId = sections.tagSection.id;
     return (
       <div>
         <NavTop

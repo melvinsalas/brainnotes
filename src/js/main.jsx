@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import NotesSection from './section';
+import Section from './section';
 
 //const {string} = React.PropTypes;
 
@@ -15,22 +15,28 @@ class MainContainer extends React.Component {
 
   render () {
     const { activeSection, activeNote, sections } = this.props;
+    const { noteSection, notebookSection, tagSection } = sections;
     return (
       <main className="main">
         <div className="container-fluid">
           <div className="row">
             <div id="section-side" className="col-sm-3 transition section">
               <div className="row">
-                {
-                  sections.filter((section)=>section.id == activeSection)
-                  .map((section)=>{
-                    return (
-                      <NotesSection 
-                        key={section.id}
-                        {...section}
-                    />)}
-                  )
-                }
+                <Section 
+                  key={noteSection.id}
+                  display={!(activeSection == noteSection.id)}
+                  {...noteSection}
+                />
+                <Section 
+                  key={notebookSection.id}
+                  display={!(activeSection == notebookSection.id)}
+                  {...notebookSection}
+                />
+                <Section 
+                  key={tagSection.id}
+                  display={!(activeSection == tagSection.id)}
+                  {...tagSection}
+                />
               </div>
             </div>
 
@@ -52,7 +58,11 @@ class MainContainer extends React.Component {
                       }
                     </h4>
                   </div>
-                <div id="display-note-content" className="panel-body section-display body-editable" contentEditable="false"> </div>
+                <div id="display-note-content" className="panel-body section-display body-editable" contentEditable="false">
+                  {
+                    (!!activeNote) ? activeNote.content : ' '
+                  }
+                </div>
                 <div className="panel-footer">
                   <i className="mdi mdi-tag"></i>
                   <span>Tags: </span>
