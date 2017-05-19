@@ -9,7 +9,7 @@ import '../node_modules/mdi/scss/materialdesignicons.scss';
 import './scss/app.scss';
 
 const App = () => (
-  <AppContainer/>
+  <AppContainer />
 );
 
 render(<App />, document.getElementById('root'));

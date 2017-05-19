@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import NavTop from './navTop';
 import NavSide from './navSide';
 import MainContainer from './main';
+import BasicExample from '../components/commons/sidebar';
 
 class AppContainer extends React.Component {
   constructor () {
@@ -88,6 +89,7 @@ class AppContainer extends React.Component {
           btnNotebooksTarget={notebookSectionId}
           btnTagsTarget={tagSectionId}
         />
+        <BasicExample/>
         <NavSide
           navClick={navClick}
           btnNotesTarget={noteSectionId}

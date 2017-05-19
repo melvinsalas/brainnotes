@@ -2,7 +2,6 @@ import React from 'react';
 import { render } from 'react-dom';
 
 import SectionPanel from './sectionPanel';
-import SectionBooks from './sectionBooks';
 
 class NotesSection extends React.Component {
   constructor () {
