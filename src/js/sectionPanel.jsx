@@ -9,14 +9,20 @@ class SectionPanel extends React.Component {
   }
 
   render () {
-    const panelObject = this.props.panelObject;
-    const { title, displayContent } = panelObject;
-    return (
-        <div onClick={()=>displayContent(panelObject)} className="panel panel-default">
-            <div className="panel-body">{title}</div>
-        </div>
-      );
+    const { title, section } = this.props;
+    let value = null;
+    switch (section) {
+      case 'Notes':
+        value = <div className="note rounded"> { title } </div>;
+        break;
+      default:
+        value = <div className="panel panel-default"><div className="panel-body"> { title } </div></div>;
     }
+
+    return (
+        <div> { value } </div>
+    );
   }
+}
 
 export default SectionPanel;
