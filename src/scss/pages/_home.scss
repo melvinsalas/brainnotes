@@ -74,6 +74,20 @@
 
 .body-editable {
   margin-bottom: auto;
+  height: 100vh;
+}
+
+textarea.editable {
+    border: 0;
+    background: transparent;
+    resize: none;
+    height: 100%;
+    width: 100%;
+
+    &::selection { 
+      background:#B9B9B9; 
+      color:#000000; 
+    }
 }
 
 .panel-editable-edit {

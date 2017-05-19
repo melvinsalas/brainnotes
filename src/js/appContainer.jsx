@@ -122,7 +122,6 @@ class AppContainer extends React.Component {
           btnNotebooksTarget={notebookSectionId}
           btnTagsTarget={tagSectionId}
         />
-        <BasicExample/>
         <NavSide
           navClick={navClick}
           btnNotesTarget={noteSectionId}

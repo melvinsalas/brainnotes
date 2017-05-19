@@ -30,9 +30,11 @@ class DisplaySection extends React.Component {
                         </h4>
                     </div>
                     <div id="display-note-content" className="panel-body section-display body-editable" contentEditable={editable}>
+                        <textarea className="editable">
                         {
                             (!!activeNote) ? activeNote.content : ' '
                         }
+                        </textarea>
                     </div>
                     <div className="panel-footer">
                         <i className="mdi mdi-tag"></i>
