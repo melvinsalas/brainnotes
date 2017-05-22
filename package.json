@@ -10,8 +10,10 @@
     "node": "6.9.1",
     "npm": "3.10.8"
   },
-  "scripts": {
-    "dev": "webpack-dev-server"
+  "scripts": {   
+    "dev": "webpack-dev-server",
+    "api": "json-server --watch api/db.json",
+    "start": "concurrently 'npm run dev' 'npm run api'"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.0",
@@ -31,6 +33,7 @@
     "eslint-plugin-react": "^6.9.0",
     "html-webpack-plugin": "^2.26.0",
     "json-loader": "^0.5.4",
+    "json-server": "^0.10.1",
     "node-sass": "^4.3.0",
     "postcss-loader": "^1.2.2",
     "precss": "^1.4.0",

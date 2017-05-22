@@ -83,11 +83,6 @@ textarea.editable {
     resize: none;
     height: 100%;
     width: 100%;
-
-    &::selection { 
-      background:#B9B9B9; 
-      color:#000000; 
-    }
 }
 
 .panel-editable-edit {
