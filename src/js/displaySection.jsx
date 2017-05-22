@@ -5,6 +5,10 @@ class DisplaySection extends React.Component {
     constructor() {
         super();
         this.state = {
+            note: {
+                title: this.props.activeNote.title,
+                content: this.props.activeNote.content
+            }
         }
     }
 
@@ -30,7 +34,7 @@ class DisplaySection extends React.Component {
                         </h4>
                     </div>
                     <div id="display-note-content" className="panel-body section-display body-editable">
-                        <textarea value={(!!activeNote) ? activeNote.content : ' '} className="editable"></textarea>
+                        <textarea value={(!!activeNote) ? activeNote.content : ' '} onChange={} className="editable"></textarea>
                     </div>
                     <div className="panel-footer">
                         <i className="mdi mdi-tag"></i>

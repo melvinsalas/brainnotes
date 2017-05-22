@@ -36,61 +36,12 @@ class AppContainer extends React.Component {
           sectionTitle: 'Tags',
         }
       },
-      setNotes: this.setNotes.bind(this),
-      setNotebooks: this.setNotebooks.bind(this),
-      setTags: this.setTags.bind(this),
       data: {
-        notes: [
-          {
-            id: '0',
-            title: 'First Notes Title',
-            content: 'First Notes Content',
-            tags: []
-          },
-          {
-            id: '1',
-            title: 'Second Notes Title',
-            content: 'Second Notes Content',
-            tags: []
-          }
-        ],
-        notebooks: [
-          {
-            id: '0',
-            title: 'First NoteBooks Title',
-            content: 'First NoteBooks Content'
-          },
-          {
-            id: '1',
-            title: 'Second NoteBooks Title',
-            content: 'Second NoteBooks Content'
-          }
-        ],
-        tags: [
-          {
-            id: '0',
-            title: 'First Tags Title',
-            content: 'First Tags Content'
-          },
-          {
-            id: '1',
-            title: 'Second Tags Title',
-            content: 'Second Tags Content'
-          }
-        ],
+        notes: [],
+        notebooks: [],
+        tags: [],
       }
     }
-
-    const { setNotes, setNotebooks, setTags } = this.state;
-
-    axios.get('http://localhost:3000/notes')
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        setNotes(response.data);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
   }
 
   navClick(e) {
@@ -124,16 +75,20 @@ class AppContainer extends React.Component {
     console.log("cancelEdit");
   }
 
-  setNotes(pData) {
-    this.state.data.notes = pData;
-  }
+  componentWillMount() {
+    let self = this;
 
-  setNotebooks(pData) {
-    this.state.data.notebooks = pData;
-  }
-
-  setTags(pData) {
-    this.state.data.tags = pData;
+    axios.get('http://localhost:3000/db')
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        console.log(self);
+        self.setState({
+          data: response.data
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {
