@@ -29,6 +29,20 @@
   display:none;
 }
 
+.panel-note-title {
+  width: calc(100% - 93px);
+}
+
+.panel-note-title {
+  background-color: #FFA;
+}
+
+.panel-note-title[readonly] {
+  background-color: transparent;    
+  border: 0;
+  box-shadow: none;
+}
+
 .hide2 .btn.btn-success {
   height: 0;
 }
@@ -141,4 +155,14 @@ textarea.editable {
   border-color: #fff #fff transparent transparent;
   -moz-border-radius: 0 0 0 5px;
   border-radius: 0 0 0 5px;
+}
+
+textarea.editable:focus,
+input.editable:focus {
+    border: 0;
+    outline: 0;
+}
+
+.editable {
+  background-color: #FFA;
 }
