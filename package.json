@@ -13,7 +13,7 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "api": "json-server --watch api/db.json",
-    "start": "concurrently 'npm run dev' 'npm run api'"
+    "start": "concurrently \"npm run dev\" \"npm run api\""
   },
   "devDependencies": {
     "autoprefixer": "^6.7.0",

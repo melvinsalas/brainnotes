@@ -15,7 +15,7 @@ class MainContainer extends React.Component {
   }
 
   render() {
-    const { activeSection, activeNote, displaySettings, sections } = this.props,
+    const { activeSection, activeNote, displaySettings, sections, data} = this.props,
       { editable, startEdit } = displaySettings,
       { noteSection, notebookSection, tagSection } = sections;
     return (
@@ -26,18 +26,21 @@ class MainContainer extends React.Component {
               <div className="row">
                 <Section
                   key={noteSection.id}
-                  display={!(activeSection == noteSection.id)}
+                  displayed={!(activeSection == noteSection.id)}
                   {...noteSection}
+                  data={data.notes}
                 />
                 <Section
                   key={notebookSection.id}
-                  display={!(activeSection == notebookSection.id)}
+                  displayed={!(activeSection == notebookSection.id)}
                   {...notebookSection}
+                  data={data.notebooks}
                 />
                 <Section
                   key={tagSection.id}
-                  display={!(activeSection == tagSection.id)}
+                  displayed={!(activeSection == tagSection.id)}
                   {...tagSection}
+                  data={data.tags}
                 />
               </div>
             </div>
@@ -55,8 +58,7 @@ class MainContainer extends React.Component {
   }
 };
 
-MainContainer.propTypes = {
-
-}
+// MainContainer.propTypes = {
+// }
 
 export default MainContainer;
