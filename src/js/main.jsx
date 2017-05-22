@@ -12,6 +12,7 @@ class MainContainer extends React.Component {
     this.state = {
 
     }
+  }
 
   render() {
     const { activeSection, activeNote, displaySettings, sections } = this.props,
