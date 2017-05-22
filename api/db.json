@@ -33,26 +33,26 @@
   "tags": [
     {
       "id": 0,
-      "name": "tag 1",
+      "title": "tag 1",
       "color": 1
     },
     {
       "id": 1,
-      "name": "tag 2",
+      "title": "tag 2",
       "color": 3
     },
     {
-      "name": "tag 123",
+      "title": "tag 123",
       "color": 5,
       "id": 2
     },
     {
-      "name": "The Discovery of India",
+      "title": "The Discovery of India",
       "color": 1,
       "id": 4
     },
     {
-      "name": "The Discovery of India 2",
+      "title": "The Discovery of India 2",
       "color": 5,
       "id": 5
     }
