@@ -12,6 +12,7 @@ class AppContainer extends React.Component {
     this.state = {
       activeSection: 'section-notes',
       activeNote: null,
+      activeNoteBackUp: null,
       navSettings: {
         navClick: this.navClick.bind(this)
       },
@@ -106,18 +107,16 @@ class AppContainer extends React.Component {
     this.state.activeNote.content = e.target.value;
     this.forceUpdate();
   }
-
+  
   saveEdit() {
     console.log("saveEdit");
-    axios.put('http://localhost:3000/tags/5',
-      {
-        "title": "The Discovery of India 33",
-        "color": 5,
-        "id": 5
-      }
-    )
+    let {activeNote} = this.state,
+          self = this;
+
+    axios.put(`http://localhost:3000/notes/${activeNote.id}`, activeNote)
       .then(function (response) {
-        console.log(response);
+        self.state.activeNoteBackUp = JSON.stringify(activeNote);
+        self.stopEdit();
       })
       .catch(function (error) {
         console.log(error);

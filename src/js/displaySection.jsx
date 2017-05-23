@@ -5,21 +5,17 @@ class DisplaySection extends React.Component {
     constructor() {
         super();
         this.state = {
-            note: {
-                title: this.props.activeNote.title,
-                content: this.props.activeNote.content
-            }
         }
     }
 
     render() {
-        const { activeNote, editable, startEdit, cancelEdit, handleTitleChange, handleContentChange } = this.props;
+        const { activeNote, editable, startEdit, saveEdit, cancelEdit, handleTitleChange, handleContentChange } = this.props;
         return (
             <div id="section-main" className="col-sm-9 section hidden-xs">
                 <div id="panel-editable" className={"panel panel-default " + ((editable) ? "editable" : "")}>
                     <div className="panel-heading clearfix">
                         <div id="save-cancel-group" className={"btn-group pull-right " + ((!editable) ? "hide" : "")}>
-                            <a href="#" data-toggle="tooltip" data-placement="bottom" title="Save" id="btn-edit-save-notes" className="btn btn-default btn-success"><i className="mdi mdi-content-save"> </i></a>
+                            <a onClick={saveEdit} href="#" data-toggle="tooltip" data-placement="bottom" title="Save" id="btn-edit-save-notes" className="btn btn-default btn-success"><i className="mdi mdi-content-save"> </i></a>
                             <a onClick={cancelEdit} href="#" data-toggle="tooltip" data-placement="bottom" title="Cancel" id="btn-edit-cancel-notes" className="btn btn-default btn-danger"><i className="mdi mdi-cancel"> </i></a>
                         </div>
                         <div
@@ -32,7 +28,7 @@ class DisplaySection extends React.Component {
                         </a>
                         <input
                             className="panel-title panel-note-title pull-left heading-editable form-control"
-                            onChange={handleTitleChange} value={(!!activeNote) ? activeNote.title : ' '}
+                            onChange={handleTitleChange} value={(!!activeNote) ? activeNote.title : ''}
                             readOnly={!editable} />
                     </div>
                     <div id="display-note-content" className="panel-body section-display body-editable">

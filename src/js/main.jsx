@@ -16,7 +16,7 @@ class MainContainer extends React.Component {
 
   render() {
     const { activeSection, activeNote, displaySettings, sections, data} = this.props,
-      { editable, startEdit, cancelEdit, handleTitleChange, handleContentChange } = displaySettings,
+      { editable, startEdit, saveEdit, cancelEdit, handleTitleChange, handleContentChange } = displaySettings,
       { noteSection, notebookSection, tagSection } = sections;
     return (
       <main className="main">
@@ -49,6 +49,7 @@ class MainContainer extends React.Component {
               activeNote={activeNote}
               editable={editable}
               startEdit={startEdit}
+              saveEdit={saveEdit}
               cancelEdit={cancelEdit}
               handleTitleChange={handleTitleChange}
               handleContentChange={handleContentChange}
