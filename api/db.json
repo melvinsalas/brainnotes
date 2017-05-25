@@ -1,97 +1,19 @@
 {
-  "notebooks": [
-    {
-      "id": 0,
-      "title": "Notebook 1"
-    },
+  "posts": [
     {
       "id": 1,
-      "title": "Notebook 2"
+      "title": "json-server",
+      "author": "typicode"
     }
   ],
-  "notes": [
-    {
-      "id": 0,
-      "title": "Pokemon",
-      "content": "Content note #1",
-      "notebook": 0,
-      "tags": [
-        0,
-        1
-      ]
-    },
+  "comments": [
     {
       "id": 1,
-      "title": "Note 2",
-      "content": "Content note #2",
-      "notebook": 1,
-      "tags": [
-        1
-      ]
+      "body": "some comment",
+      "postId": 1
     }
   ],
-  "tags": [
-    {
-      "id": 0,
-      "title": "tag 1",
-      "color": 1
-    },
-    {
-      "id": 1,
-      "title": "tag 2",
-      "color": 3
-    },
-    {
-      "title": "tag 123",
-      "color": 5,
-      "id": 2
-    },
-    {
-      "title": "The Discovery of India",
-      "color": 1,
-      "id": 4
-    },
-    {
-      "title": "The Discovery of India 33",
-      "color": 5,
-      "id": 5
-    },
-    {
-      "title": "The Discovery of India 4",
-      "color": 5,
-      "id": 6
-    }
-  ],
-  "colors": [
-    {
-      "id": 0,
-      "name": "Red",
-      "hex": "#F44336"
-    },
-    {
-      "id": 1,
-      "name": "Purple",
-      "hex": "#9C27B0"
-    },
-    {
-      "id": 2,
-      "name": "Blue",
-      "hex": "#2196F3"
-    },
-    {
-      "id": 3,
-      "name": "Green",
-      "hex": "#4CAF50"
-    },
-    {
-      "id": 4,
-      "name": "Yellow",
-      "hex": "#FFEB3B"
-    },
-    {
-      "id": 5,
-      "name": "Orange",
-      "hex": "#FF9800"
-    }
-  ]
+  "profile": {
+    "name": "typicode"
+  }
 }
