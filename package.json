@@ -13,7 +13,8 @@
   "scripts": {
     "dev": "webpack-dev-server",
     "api": "json-server --watch api/db.json",
-    "start": "concurrently \"npm run dev\" \"npm run api\""
+    "start": "concurrently \"npm run dev\" \"npm run api\"",
+    "nodemon": "nodemon ./api"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.0",
@@ -33,6 +34,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
     "eslint-plugin-react": "^6.9.0",
+    "express": "^4.15.3",
     "html-webpack-plugin": "^2.26.0",
     "json-loader": "^0.5.4",
     "json-server": "^0.10.1",

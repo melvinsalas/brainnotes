@@ -12,7 +12,6 @@ class Section extends React.Component {
 
   render () {
     const { id, sectionTitle, data, displayContent, displayed } = this.props;
-    console.log(sectionTitle + " section displayed:" + displayed);
     return (
         <div id={id} className={"col-md-12 transition " + ((displayed)?"hide2":"")}>
             <div className="panel panel-default">
