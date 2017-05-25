@@ -11,7 +11,7 @@
     "npm": "3.10.8"
   },
   "scripts": {
-    "api": "json-server --watch api/db.json",
+    "api": "json-server --watch apimock/db.json",
     "dev": "webpack-dev-server",
     "docs": "raml2html docs/api.raml > docs/api.html",
     "nodemon": "nodemon ./api",
