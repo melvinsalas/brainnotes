@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "webpack-dev-server",
-    "api": "json-server --watch api/db.json",
+    "api": "json-server --watch apimock/db.json",
     "start": "concurrently \"npm run dev\" \"npm run api\"",
     "nodemon": "nodemon ./api"
   },
