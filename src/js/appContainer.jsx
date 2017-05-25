@@ -81,10 +81,10 @@ class AppContainer extends React.Component {
   }
 
   setActiveNote(pNote) {
+    console.log("setActiveNote");
     if (!!this.state.activeNote) {
       this.cancelEdit();
     }
-    console.log(JSON.stringify(pNote, null, 4));
     this.setState({
       activeNote: pNote,
       activeNoteBackUp: JSON.stringify(pNote)
@@ -92,6 +92,7 @@ class AppContainer extends React.Component {
   }
 
   startEdit() {
+    console.log("startEdit");
     if (!!this.state.activeNote) {
       this.state.displaySettings.editable = true;
       this.forceUpdate();
@@ -114,7 +115,8 @@ class AppContainer extends React.Component {
 
     axios.put(`http://localhost:3000/notes/${activeNote.id}`, activeNote)
       .then(function (response) {
-        self.state.activeNoteBackUp = JSON.stringify(activeNote);
+        console.log(response.data);    
+        self.state.activeNoteBackUp = JSON.stringify(response.data);
         self.stopEdit();
       })
       .catch(function (error) {
@@ -124,9 +126,11 @@ class AppContainer extends React.Component {
 
   cancelEdit() {
     console.log("cancelEdit");
-    Object.assign(this.state.activeNote, JSON.parse(this.state.activeNoteBackUp));
-    this.stopEdit();
-    this.forceUpdate();
+    if (this.state.displaySettings.editable) {
+      Object.assign(this.state.activeNote, JSON.parse(this.state.activeNoteBackUp));
+      this.stopEdit();
+      this.forceUpdate();
+    }
   }
 
   stopEdit(){

@@ -1,0 +1,241 @@
+#%RAML 1.0
+title: Brainnotes
+version: v1
+protocols: [ HTTPS ] 
+baseUri: http://myapi.mysite.com/api/{version}
+mediaType: application/json
+
+types:
+  Note:
+    type: object
+    properties:
+      id:
+        required: integer
+      title: string
+      content?: string
+      notebook?: integer
+      tags?: integer[]
+  
+  Notebook:
+    type: object
+    properties:
+      id:
+        required: integer
+      title: string
+  
+  Tag:
+    type: object
+    properties:
+      id:
+        required: integer
+      title: string
+      color: integer
+  
+  Color:
+    id: integer
+    title: string
+    class: string
+    
+/notes:
+  get:
+    description: List all Notes matching query criteria, if provided; otherwise list all Notes
+    queryParameters:
+      id?: integer
+    responses:
+      200:
+        body:
+          application/json:
+            type: note[]
+            example: 
+              [
+                { "id" : 1, "title" : "First Note", "content" : "First Note Content" },
+                { "id" : 2, "title" : "Second Note", "content" : "Second Note Content" }
+              ]
+  post:
+    description: Create a new Note
+    body:
+      application/json:
+        type: note
+        example: { "id" : 1, "title" : "Another Note", "content" : "Another Note Content" }
+    responses:
+      201:
+        body:
+          application/json:
+            type: note
+            example: { "id" : 1, "title" : "Another Note", "content" : "Another Note Content" }
+  /{id}:
+    get:
+      description: Get a Note by id
+      responses:
+        200:
+          body:
+            application/json:
+              type: note
+              example: { "id" : 1, "title" : "First Note", "content" : "First Note Content" }
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "message" : "Not Found", "code" : 1001 }
+    put:
+      description: Update a Foo by id
+      body:
+        application/json:
+          type: note
+          example: { "id" : 1, "title" : "First Note", "content" : "First Note Content" }
+      responses:
+        200:
+          body:
+            application/json:
+              type: note
+              example: { "id" : 1, "title" : "First Note", "content" : "First Note Content" }
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "id" : 1, "title" : "First Note", "content" : "First Note Content" }
+    delete:
+      description: Delete a Foo by id
+      responses:
+        204:
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "id" : 1, "title" : "First Note", "content" : "First Note Content" }
+
+/notebooks:
+  get:
+    description: List all Notebooks matching query criteria, if provided; otherwise list all Notebooks
+    queryParameters:
+      id?: integer
+    responses:
+      200:
+        body:
+          application/json:
+            type: notebook[]
+            example: 
+              [
+                { "id" : 1, "title" : "First Notebook" },
+                { "id" : 2, "title" : "Second Notebook" }
+              ]
+  post:
+    description: Create a new Foo
+    body:
+      application/json:
+        type: note
+        example: { "id" : 1, "title" : "Another Notebook" }
+    responses:
+      201:
+        body:
+          application/json:
+            type: note
+            example: { "id" : 1, "title" : "Another Notebook" }
+  /{id}:
+    get:
+      description: Get a note by id
+      responses:
+        200:
+          body:
+            application/json:
+              type: note
+              example: { "id" : 1, "title" : "First Notebook" }
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "message" : "Not found", "code" : 1001 }
+    put:
+      description: Update a Foo by id
+      body:
+        application/json:
+          type: note
+          example: { "id" : 1, "title" : "First Notebook" }
+      responses:
+        200:
+          body:
+            application/json:
+              type: note
+              example: { "id" : 1, "title" : "First Notebook" }
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "id" : 1, "title" : "First Notebook" }
+    delete:
+      description: Delete a Foo by id
+      responses:
+        204:
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "id" : 1, "title" : "First Notebook" }
+
+/tags:
+  get:
+    description: List all Tags matching query criteria, if provided; otherwise list all Tags
+    queryParameters:
+      id?: integer
+    responses:
+      200:
+        body:
+          application/json:
+            type: tag[]
+            example: 
+              [
+                { "id" : 1, "title" : "First Tag" },
+                { "id" : 2, "title" : "Second Tag" }
+              ]
+  post:
+    description: Create a new Foo
+    body:
+      application/json:
+        type: note
+        example: { "id" : 1, "title" : "Another Tag" }
+    responses:
+      201:
+        body:
+          application/json:
+            type: note
+            example: { "id" : 1, "title" : "Another Tag" }
+  /{id}:
+    get:
+      description: Get a note by id
+      responses:
+        200:
+          body:
+            application/json:
+              type: note
+              example: { "id" : 1, "title" : "First Tag", "color" : 1 }
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "message" : "Not found", "code" : 1001 }
+    put:
+      description: Update a Foo by id
+      body:
+        application/json:
+          type: note
+          example: { "id" : 1, "title" : "First Tag", "color" : 1 }
+      responses:
+        200:
+          body:
+            application/json:
+              type: note
+              example: { "id" : 1, "title" : "First Tag", "color" : 1 }
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "id" : 1, "title" : "First Tag", "color" : 1 }
+    delete:
+      description: Delete a Foo by id
+      responses:
+        204:
+        404:
+          body:
+            application/json:
+              type: Error
+              example: { "id" : 1, "title" : "First Tag", "color" : 1 }

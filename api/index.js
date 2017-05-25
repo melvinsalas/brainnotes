@@ -1,19 +1,22 @@
+const express = require('express'),
+      port = 3000;
 
-const express = require('express');
+let app = express();
 
-const app = express();
-const port = 3000;
-
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
-
-app.get('/notes', (req, res) => {
-    res.json({
-        "name": "note 1"
+app.get(
+    '/',
+    (req, res) => {
+        res.send('Hello World');
     });
-});
+
+app.get(
+    '/notes',
+    (req, res) => {
+        res.json({
+            "title" : 'Hello World'
+        });
+    });
 
 app.listen(port, () => {
     console.log(`Express listening on port ${port}`);
-});
+    });
