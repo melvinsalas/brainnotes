@@ -1,12 +1,17 @@
 const express = require('express'),
-      port = 3000;
+      routes = require('./routes/'),
+      port = 7777;
 
 let app = express();
+
+require('dotenv').config();
+
+app.use('/api', routes);
 
 app.get(
     '/',
     (req, res) => {
-        res.send('Hello World');
+        res.send('Hello World' + process.env.DB);
     });
 
 app.get(
