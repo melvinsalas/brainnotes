@@ -6,7 +6,7 @@ const note = require('./../models/note.js');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(process.env.DB, (err) => {
+mongoose.connect('mongodb://127.0.0.1:27017/boing', (err) => {
     if (err) {
         console.log(`Error Potato: ${err}`);
     } else {
@@ -15,7 +15,8 @@ mongoose.connect(process.env.DB, (err) => {
 });
 
 router.get('/', function (req, res) {
-    note.find({"title": "NOTE1"}, (err, doc) => {
+    //console.log(note.find().exec());
+    note.find({}, (err, doc) => {
         if (err) {
             res.send(err);
             console.log(err);
