@@ -154,6 +154,16 @@ class AppContainer extends React.Component {
       });
   }
 
+  componentDidMount() {
+    axios.get('http://localhost:7777/api')
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   render() {
     const { navSettings, displaySettings, activeSection, activeNote, sections, data } = this.state,
       { navClick } = navSettings,

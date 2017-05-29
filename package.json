@@ -14,7 +14,7 @@
     "api": "json-server --watch api_mock/db.json",
     "dev": "webpack-dev-server",
     "docs": "raml2html docs/api.raml > docs/api.html",
-    "nodemon": "nodemon ./api",
+    "nodemon": "nodemon ./api/start.js",
     "start": "concurrently \"npm run dev\" \"npm run api\""
   },
   "devDependencies": {
@@ -28,6 +28,7 @@
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
+    "body-parser": "^1.17.2",
     "concurrently": "^3.4.0",
     "css-loader": "^0.26.1",
     "dotenv": "^4.0.0",

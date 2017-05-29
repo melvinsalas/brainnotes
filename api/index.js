@@ -1,10 +1,11 @@
+require('dotenv').config();
+require('start.js');
+
 const express = require('express'),
       routes = require('./routes/'),
       port = 7777;
 
 let app = express();
-
-require('dotenv').config();
 
 app.use('/api', routes);
 

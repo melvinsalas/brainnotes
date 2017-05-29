@@ -1,8 +1,11 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
-const app = require('./index');
+const app = require('./app.js');
 
-mongoose.connect(process.env.DB, (err)=>{
+mongoose.Promise = global.Promise;
+
+mongoose.connect(`mongodb://${process.env.DB}`, (err) => {
+    console.log(process.env.DB);
     if (err) {
         console.log(`Error Potato: ${err}`);
     } else {
@@ -13,5 +16,5 @@ mongoose.connect(process.env.DB, (err)=>{
 app.set('port', process.env.PORT || 7777);
 
 app.listen(process.env.PORT, () =>{
-    console.log(`Server running on Port ?`);
+    console.log(`Server running on Port ${process.env.PORT}`);
 });
