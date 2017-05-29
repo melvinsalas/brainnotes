@@ -71,6 +71,8 @@ class AppContainer extends React.Component {
     //   });
   }
 
+
+
   navClick(e) {
     if (e.currentTarget.nodeName == "A") {
       e.stopPropagation();
@@ -78,6 +80,17 @@ class AppContainer extends React.Component {
         activeSection: e.currentTarget.dataset.section
       });
     };
+  }
+
+  newNote() {
+    let noteTemp = {
+      title: "New",
+      content: "",
+      notebook: "",
+      tags: []
+    }
+    this.setActiveNote(noteTemp);
+    this.startEdit();
   }
 
   setActiveNote(pNote) {
@@ -141,7 +154,7 @@ class AppContainer extends React.Component {
   componentWillMount() {
     let self = this;
 
-    axios.get('http://localhost:3000/db')
+    axios.get(`http://localhost:3000/db`)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
         console.log(self);
@@ -155,13 +168,18 @@ class AppContainer extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:7777/api')
+    axios.put('http://localhost:7777/api/notes', {
+        _id: '592c93886e33392a88d4ea1a',
+        title: 'Pokemon title',
+        content: 'Pokemon Content'
+    })
       .then(function (response) {
         console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
         console.log(error);
       });
+    
   }
 
   render() {

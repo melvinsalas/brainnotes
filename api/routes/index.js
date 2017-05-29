@@ -23,6 +23,8 @@ router.get('/', function (req, res) {
 });
 
 router.post('/notes', noteController.add);
-router.get('/notes', noteController.getAll);
+router.get('/notes', noteController.get);
+router.delete('/notes', noteController.fuckThis);
+router.put('/notes', noteController.update);
 
 module.exports = router;
