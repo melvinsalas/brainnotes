@@ -27,4 +27,14 @@ router.get('/notes', noteController.get);
 router.delete('/notes', noteController.fuckThis);
 router.put('/notes', noteController.update);
 
+router.post('/notebooks', noteController.add);
+router.get('/notebooks', noteController.get);
+router.delete('/notebooks', noteController.fuckThis);
+router.put('/notebooks', noteController.update);
+
+router.post('/tags', noteController.add);
+router.get('/tags', noteController.get);
+router.delete('/tags', noteController.fuckThis);
+router.put('/tags', noteController.update);
+
 module.exports = router;

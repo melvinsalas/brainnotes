@@ -27,6 +27,7 @@ class AppContainer extends React.Component {
         noteSection: {
           id: 'section-notes',
           displayContent: this.setActiveNote.bind(this),
+          newNote: this.newNote.bind(this),
           sectionTitle: 'Notes',
         },
         notebookSection: {
@@ -153,8 +154,20 @@ class AppContainer extends React.Component {
 
   componentWillMount() {
     let self = this;
+    let response = {
+      notes: summon('notes'),
+      notebooks: summon('notebooks'),
+      tags: summon('tags')
+    }
+    this.setState({
+      data: response
+    });
+  }
 
-    axios.get(`http://localhost:3000/db`)
+  summon(sCollection) {
+    let result = [];
+
+    axios.get(`http://localhost:7777/api/${sCollection}`)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
         console.log(self);
@@ -165,20 +178,22 @@ class AppContainer extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
+    
+    return result;
   }
 
   componentDidMount() {
-    axios.put('http://localhost:7777/api/notes', {
-        _id: '592c93886e33392a88d4ea1a',
-        title: 'Pokemon title',
-        content: 'Pokemon Content'
-    })
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    // axios.put('http://localhost:7777/api/notes', {
+    //     _id: '592c93886e33392a88d4ea1a',
+    //     title: 'Pokemon title',
+    //     content: 'Pokemon Content'
+    // })
+    //   .then(function (response) {
+    //     console.log(JSON.stringify(response.data));
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
     
   }
 
