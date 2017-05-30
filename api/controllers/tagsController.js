@@ -1,9 +1,9 @@
-// Notes Controller
+// Tags Controller
 let mongoose = require('mongoose');
-let Note = require('./../models/note');
+let Tag = require('./../models/tags');
 
 let get = (req, res) => {
-    Note.find(req.query).exec((err, data) => {
+    Tag.find(req.query).exec((err, data) => {
         if (!err) {
             res.status(200);
             res.json(data);
@@ -14,14 +14,14 @@ let get = (req, res) => {
 };
 
 let add = (req, res) => {
-    const newNote = new Note(req.body);
-    newNote.save((err, data) => {
+    const newTag = new Tag(req.body);
+    newTag.save((err, data) => {
         res.send(data);
     });
 }
 
 let fuckThis = (req, res) => {
-    Note.remove(req.body, (err, data)=> {
+    Tag.remove(req.body, (err, data)=> {
         if (!err) {
             res.status(204);
             res.json(data);
@@ -33,7 +33,7 @@ let fuckThis = (req, res) => {
 
 let update = (req, res) => {
     let conditions = {_id: req.body._id};
-    Note.update(conditions, req.body, (err, data) => {
+    Tag.update(conditions, req.body, (err, data) => {
         if (!err) {
             res.status(202);
             res.json(data);
@@ -43,8 +43,8 @@ let update = (req, res) => {
     });
 }
 
-let notesController = {
+let tagsController = {
     get, add, fuckThis, update
 }
 
-module.exports = notesController;
+module.exports = tagsController;
