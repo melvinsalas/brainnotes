@@ -9,17 +9,6 @@ const noteController = require('./../controllers/notesController')
 
 router.get('/', function (req, res) {
     res.send('Welcome to the BN api');
-    //console.log(note.find().exec());
-    // note.find({}, (err, doc) => {
-    //     if (err) {
-    //         res.send(err);
-    //         console.log(err);
-    //     } else {
-    //         res.json(doc);
-    //         console.log(err);
-    //         console.log(doc);
-    //     }
-    // });
 });
 
 router.post('/notes', noteController.add);
