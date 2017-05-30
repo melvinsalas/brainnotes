@@ -5,7 +5,9 @@ const router = express.Router();
 
 const note = require('./../models/note');
 
-const noteController = require('./../controllers/notesController')
+const noteController = require('./../controllers/notesController');
+const notebookController = require('./../controllers/notebooksController');
+const tagController = require('./../controllers/tagsController');
 
 router.get('/', function (req, res) {
     res.send('Welcome to the BN api');
@@ -16,14 +18,14 @@ router.get('/notes', noteController.get);
 router.delete('/notes', noteController.fuckThis);
 router.put('/notes', noteController.update);
 
-router.post('/notebooks', noteController.add);
-router.get('/notebooks', noteController.get);
-router.delete('/notebooks', noteController.fuckThis);
-router.put('/notebooks', noteController.update);
+router.post('/notebooks', notebookController.add);
+router.get('/notebooks', notebookController.get);
+router.delete('/notebooks', notebookController.fuckThis);
+router.put('/notebooks', notebookController.update);
 
-router.post('/tags', noteController.add);
-router.get('/tags', noteController.get);
-router.delete('/tags', noteController.fuckThis);
-router.put('/tags', noteController.update);
+router.post('/tags', tagController.add);
+router.get('/tags', tagController.get);
+router.delete('/tags', tagController.fuckThis);
+router.put('/tags', tagController.update);
 
 module.exports = router;

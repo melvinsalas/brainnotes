@@ -127,7 +127,7 @@ class AppContainer extends React.Component {
     let {activeNote} = this.state,
           self = this;
 
-    axios.put(`http://localhost:3000/notes/${activeNote.id}`, activeNote)
+    axios.put('http://localhost:7777/api/notes', activeNote)
       .then(function (response) {
         console.log(response.data);    
         self.state.activeNoteBackUp = JSON.stringify(response.data);
@@ -153,33 +153,23 @@ class AppContainer extends React.Component {
   }
 
   componentWillMount() {
-    let self = this;
-    let response = {
-      notes: summon('notes'),
-      notebooks: summon('notebooks'),
-      tags: summon('tags')
-    }
-    this.setState({
-      data: response
-    });
+    this.summon('notes');
+    this.summon('notebooks');
+    this.summon('tags');
   }
 
   summon(sCollection) {
-    let result = [];
+    let self = this;
 
     axios.get(`http://localhost:7777/api/${sCollection}`)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
-        console.log(self);
-        self.setState({
-          data: response.data
-        });
+        self.state.data[sCollection] = response.data;
+        self.forceUpdate();
       })
       .catch(function (error) {
         console.log(error);
       });
-    
-    return result;
   }
 
   componentDidMount() {

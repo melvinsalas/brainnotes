@@ -1,6 +1,6 @@
 // Tags Controller
 let mongoose = require('mongoose');
-let Tag = require('./../models/tags');
+let Tag = require('./../models/tag');
 
 let get = (req, res) => {
     Tag.find(req.query).exec((err, data) => {

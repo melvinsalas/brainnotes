@@ -25,7 +25,7 @@ class Section extends React.Component {
                     {data.map((panel)=>{
                         return (
                             <SectionPanel 
-                                key={panel.id}
+                                key={panel._id}
                                 sectionTitle = { sectionTitle }
                                 displayContent={displayContent}
                                 panel={panel}
