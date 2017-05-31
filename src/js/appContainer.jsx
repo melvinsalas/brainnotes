@@ -10,6 +10,7 @@ class AppContainer extends React.Component {
     super();
     this.state = {
       activeSection: 'section-notes',
+      showMobileNote: false, 
       activeNote: null,
       activeNoteBackUp: null,
       navSettings: {
@@ -22,6 +23,7 @@ class AppContainer extends React.Component {
         handleContentChange: this.handleContentChange.bind(this),
         saveEdit: this.saveEdit.bind(this),
         cancelEdit: this.cancelEdit.bind(this),
+        back: this.back.bind(this),
         deleteNote: this.deleteNote.bind(this)
       },
       sections: {
@@ -46,31 +48,6 @@ class AppContainer extends React.Component {
         tags: [],
       }
     }
-
-    // const { setNotes, setNotebooks, setTags } = this.state;
-
-    // axios.get('http://localhost:3000/notes')
-    //   .then(function (response) {
-    //     console.log(JSON.stringify(response.data));
-    //     setNotes(response.data);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-
-    // axios.put('http://localhost:3000/tags/5',
-    //   {
-    //     "title": "The Discovery of India 33",
-    //     "color": 5,
-    //     "id": 5
-    //   }
-    // )
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
   }
 
   handleTitleChange(e) {
@@ -98,6 +75,7 @@ class AppContainer extends React.Component {
     }
     this.setState({
       activeNote: pNote,
+      showMobileNote: true,
       activeNoteBackUp: JSON.stringify(pNote)
     });
   }
@@ -186,6 +164,13 @@ class AppContainer extends React.Component {
       this.forceUpdate();
   }
 
+  back() {
+    this.cancelEdit();
+    this.setState({
+        showMobileNote: false
+      });
+  }
+
   stopEdit(){
     this.state.displaySettings.editable = false;
     this.forceUpdate();
@@ -227,7 +212,7 @@ class AppContainer extends React.Component {
   }
 
   render() {
-    const { navSettings, displaySettings, activeSection, activeNote, sections, data } = this.state,
+    const { navSettings, displaySettings, activeSection, activeNote, sections, data, showMobileNote } = this.state,
       { navClick } = navSettings,
       noteSectionId = sections.noteSection.id,
       notebookSectionId = sections.notebookSection.id,
@@ -253,6 +238,7 @@ class AppContainer extends React.Component {
           sections={sections}
           displaySettings={displaySettings}
           data={data}
+          showMobileNote={showMobileNote}
         />
       </div>
     );

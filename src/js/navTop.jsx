@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Link } from 'react-router-dom'
 
 class NavTop extends React.Component {
   constructor () {
@@ -28,9 +29,9 @@ class NavTop extends React.Component {
           </div>
           <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul className="nav navbar-nav">
-              <li><a id="nav-btn-notes" href="#"><span className="navbar-item">Notes</span></a></li>
-              <li><a id="nav-btn-notebooks" href="#"><span>Notebooks</span></a></li>
-              <li><a id="nav-btn-tags" href="#"><span>Tags</span></a></li>
+              <li><Link to='/notes'><span>Notes</span></Link></li>
+              <li><Link to='/notebooks'><span>Notebooks</span></Link></li>
+              <li><Link to='/tags'><span>Tags</span></Link></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
               <li className="dropdown">

@@ -43,7 +43,8 @@ class SectionPanel extends React.Component {
     }
 
     return (
-        <div> <Link to='/notes/potato'> { value } </Link> </div>
+        // <div> <Link to='/notes/potato'> { value } </Link> </div>
+        <div> { value } </div>
     );
   }
 }

@@ -17,14 +17,14 @@ class MainContainer extends React.Component {
     this.state = { }
   }
   render() {
-    const { activeSection, activeNote, displaySettings, sections, data} = this.props,
-      { editable, deleteNote, startEdit, saveEdit, cancelEdit, handleTitleChange, handleContentChange } = displaySettings,
+    const { activeSection, activeNote, displaySettings, sections, data, showMobileNote} = this.props,
+      { editable, deleteNote, startEdit, saveEdit, cancelEdit, back, handleTitleChange, handleContentChange } = displaySettings,
       { noteSection, notebookSection, tagSection } = sections;
     return (
       <main className="main">
         <div className="container-fluid">
           <div className="row">
-            <div id="section-side" className="col-sm-3 transition section">
+            <div id="section-side" className={`col-sm-3 transition section ${(showMobileNote ? "hidden-xs" : "")}`}>
               <div className = "row">
                 <Route path = "/notes" render = { (props) => (
                   <Section
@@ -57,9 +57,11 @@ class MainContainer extends React.Component {
               startEdit={startEdit}
               saveEdit={saveEdit}
               cancelEdit={cancelEdit}
+              back={back}
               handleTitleChange={handleTitleChange}
               handleContentChange={handleContentChange}
               tags={data.tags}
+              showMobileNote={showMobileNote}
             />
           </div>
         </div>

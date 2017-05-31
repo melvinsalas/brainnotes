@@ -30,10 +30,14 @@
 
 .panel-note-title {
   width: calc(100% - 93px);
+  background-color: #FFA;
 }
 
-.panel-note-title {
-  background-color: #FFA;
+@media (max-width: 768px) {
+  .panel-note-title {
+      width: calc(100% - 139px);
+      margin-left: 10px;
+  }
 }
 
 .panel-note-title[readonly] {
