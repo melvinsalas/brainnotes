@@ -58,6 +58,7 @@ class MainContainer extends React.Component {
               cancelEdit={cancelEdit}
               handleTitleChange={handleTitleChange}
               handleContentChange={handleContentChange}
+              tags={data.tags}
             />
           </div>
         </div>
