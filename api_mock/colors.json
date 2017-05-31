@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Gray",
+        "class": "defaul"
+    },
+    {
+        "name": "Blue",
+        "class": "primary"
+    },
+    {
+        "name": "Green",
+        "class": "success"
+    },
+    {
+        "name": "Ligth Blue",
+        "class": "info"
+    },
+    {
+        "name": "Yellow",
+        "class": "warning"
+    },
+    {
+        "name": "Red",
+        "class": "danger"
+    }
+]
