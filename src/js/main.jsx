@@ -50,6 +50,7 @@ class MainContainer extends React.Component {
               </div>
             </div>
             <DisplaySection
+              tags={data.tags}
               activeNote={activeNote}
               editable={editable}
               deleteNote={deleteNote}
