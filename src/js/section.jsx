@@ -4,14 +4,16 @@ import { render } from 'react-dom';
 import SectionPanel from './sectionPanel';
 
 class Section extends React.Component {
-  constructor () {
-    super();
+  constructor (props) {
+    super(props);
     this.state = {
     }
   }
 
   render () {
     const { id, sectionTitle, data, displayContent, displayed } = this.props;
+    console.log("Section Potato!");
+    console.log(this.props.data);
     return (
         <div id={id} className={"col-md-12 transition " + ((displayed)?"hide2":"")}>
             <div className="panel panel-default">

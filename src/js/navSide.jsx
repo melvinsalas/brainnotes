@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Link } from 'react-router-dom'
 
 class NavSide extends React.Component {
   constructor () {
@@ -13,9 +14,9 @@ class NavSide extends React.Component {
     return (
       <nav className="sidebar">
         <ul>
-          <li><a id="btn-notes" href="#" onClick={navClick} data-section={btnNotesTarget}><i className="mdi mdi-note" data-toggle="tooltip" data-placement="right" title="Notes"></i></a></li>
-          <li><a id="btn-notebooks" href="#" onClick={navClick} data-section={btnNotebooksTarget}><i className="mdi mdi-book" data-toggle="tooltip" data-placement="right" title="Notebooks"></i></a></li>
-          <li><a id="btn-tags" href="#" onClick={navClick} data-section={btnTagsTarget}><i className="mdi mdi-tag" data-toggle="tooltip" data-placement="right" title="Tags"></i></a></li>
+          <li><Link to='/notes' ><i className="mdi mdi-note" data-toggle="tooltip" data-placement="right" title="Notes"></i></Link></li>
+          <li><Link to='/notebooks'><i className="mdi mdi-book" data-toggle="tooltip" data-placement="right" title="Notebooks"></i></Link></li>
+          <li><Link to='/tags'><i className="mdi mdi-tag" data-toggle="tooltip" data-placement="right" title="Tags"></i></Link></li>
         </ul>
       </nav>
       );
