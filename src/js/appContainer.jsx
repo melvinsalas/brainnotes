@@ -21,7 +21,8 @@ class AppContainer extends React.Component {
         handleTitleChange: this.handleTitleChange.bind(this),
         handleContentChange: this.handleContentChange.bind(this),
         saveEdit: this.saveEdit.bind(this),
-        cancelEdit: this.cancelEdit.bind(this)
+        cancelEdit: this.cancelEdit.bind(this),
+        deleteNote: this.deleteNote.bind(this)
       },
       sections: {
         noteSection: {
@@ -72,7 +73,14 @@ class AppContainer extends React.Component {
     //   });
   }
 
-
+  handleTitleChange(e) {
+    this.state.activeNote.title = e.target.value;
+    this.forceUpdate();
+  }
+  handleContentChange(e) {
+    this.state.activeNote.content = e.target.value;
+    this.forceUpdate();
+  }
 
   navClick(e) {
     if (e.currentTarget.nodeName == "A") {
@@ -81,17 +89,6 @@ class AppContainer extends React.Component {
         activeSection: e.currentTarget.dataset.section
       });
     };
-  }
-
-  newNote() {
-    let noteTemp = {
-      title: "New",
-      content: "",
-      notebook: "",
-      tags: []
-    }
-    this.setActiveNote(noteTemp);
-    this.startEdit();
   }
 
   setActiveNote(pNote) {
@@ -105,6 +102,38 @@ class AppContainer extends React.Component {
     });
   }
 
+  newNote() {
+    console.log("newNote");
+    let noteTemp = {
+      _id: null,
+      title: "New",
+      content: "Potato",
+      notebook: "",
+      tags: []
+    }
+    this.setState({activeNote:noteTemp}, this.startEdit.bind(this));
+  }
+
+  deleteNote() {
+    let self = this;
+    let noteList = this.state.data.notes;
+    let {activeNote} = this.state;
+
+    console.log("deleteNote");
+
+    axios.delete('http://localhost:7777/api/notes', {
+      params: {_id:activeNote._id}
+    })
+      .then(function (response) {
+        console.log(noteList.indexOf(activeNote));
+        noteList.splice(noteList.indexOf(activeNote), 1);
+        self.forceUpdate();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   startEdit() {
     console.log("startEdit");
     if (!!this.state.activeNote) {
@@ -112,22 +141,14 @@ class AppContainer extends React.Component {
       this.forceUpdate();
     }
   }
-
-  handleTitleChange(e) {
-    this.state.activeNote.title = e.target.value;
-    this.forceUpdate();
-  }
-  handleContentChange(e) {
-    this.state.activeNote.content = e.target.value;
-    this.forceUpdate();
-  }
   
   saveEdit() {
     console.log("saveEdit");
     let {activeNote} = this.state,
           self = this;
-
-    axios.put('http://localhost:7777/api/notes', activeNote)
+    
+    if (!!activeNote._id) {
+      axios.put('http://localhost:7777/api/notes', activeNote)
       .then(function (response) {
         console.log(response.data);    
         self.state.activeNoteBackUp = JSON.stringify(response.data);
@@ -136,15 +157,33 @@ class AppContainer extends React.Component {
       .catch(function (error) {
         console.log(error);
       });
+    } else {
+      delete activeNote._id;
+      axios.post('http://localhost:7777/api/notes', activeNote)
+      .then(function (response) {
+        console.log(response.data);    
+        self.setActiveNote(response.data);
+        self.state.data.notes.push(response.data);
+        self.stopEdit();
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
   }
 
   cancelEdit() {
     console.log("cancelEdit");
-    if (this.state.displaySettings.editable) {
+    if (!!this.state.activeNote._id) {
       Object.assign(this.state.activeNote, JSON.parse(this.state.activeNoteBackUp));
+    } else {
+      this.setState({
+        activeNote: null,
+        activeNoteBackUp: null
+      });
+    }
       this.stopEdit();
       this.forceUpdate();
-    }
   }
 
   stopEdit(){

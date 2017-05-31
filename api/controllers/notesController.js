@@ -21,14 +21,25 @@ let add = (req, res) => {
 }
 
 let fuckThis = (req, res) => {
-    Note.remove(req.body, (err, data)=> {
-        if (!err) {
-            res.status(204);
-            res.json(data);
-        } else {
-            res.json(err);
-        }
-    });
+    let condition = req.body;
+    if (!!Object.getOwnPropertyNames(req.query).length) {
+        condition = req.query;
+    }
+
+    if (!!Object.getOwnPropertyNames(condition).length) {
+        Note.remove(condition, (err, data)=> {
+            if (!err) {
+                res.status(204);
+                res.send('data');
+            } else {
+                res.status(404);
+                res.json(err);
+            }
+        });
+    } else {
+        res.status(404);
+        res.json('Error, empty condition');
+    }
 }
 
 let update = (req, res) => {
