@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import TagLabel from './tagLabel';
 
 class DisplaySection extends React.Component {
     constructor() {
@@ -9,7 +10,7 @@ class DisplaySection extends React.Component {
     }
 
     render() {
-        const { activeNote, editable, deleteNote, startEdit, saveEdit, cancelEdit, handleTitleChange, handleContentChange } = this.props;
+        const { activeNote, editable, deleteNote, startEdit, saveEdit, cancelEdit, handleTitleChange, handleContentChange, tags } = this.props;
         return (
             <div id="section-main" className="col-sm-9 section hidden-xs">
                 <div id="panel-editable" className={"panel panel-default " + ((editable) ? "editable" : "")}>
@@ -37,12 +38,11 @@ class DisplaySection extends React.Component {
                     <div className="panel-footer">
                         <i className="mdi mdi-tag"></i>
                         <span>Tags: </span>
-                        <span className="label label-default">Default</span>
-                        <span className="label label-primary">Primary</span>
-                        <span className="label label-success">Success</span>
-                        <span className="label label-info">Info</span>
-                        <span className="label label-warning">Warning</span>
-                        <span className="label label-danger">Danger</span>
+                        {!!activeNote && activeNote.tags.map((tagId)=>{
+                            return (
+                                <TagLabel key={tagId} tagId={tagId} tags={tags}/>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
