@@ -18,7 +18,27 @@ class SectionPanel extends React.Component {
         value = <div onClick={()=>{displayContent(panel)}} className="note rounded"> { title } </div>;
         break;
       default:
-        value = <div className="panel panel-default"><div className="panel-body"> { title } </div></div>;
+        value = (<div className="panel panel-default">
+            <div className="panel-body"> { title } </div>
+            <div className="panel-footer clearfix">
+              <div className="pull-right btn-group" role='group'>
+                <button onClick={''} className="btn btn-default btn-warning btn-xs">
+                  <i className="mdi mdi-pencil"></i>
+                </button>
+                <button onClick={''} className="btn btn-default btn-danger btn-xs">
+                  <i className="mdi mdi-delete"></i>
+                </button>
+              </div>
+              <div className="pull-right btn-group" role='group'>
+                <button onClick={''} className="btn btn-default btn-success btn-xs">
+                  <i className="mdi mdi-content-save"></i>
+                </button>
+                <button onClick={''} className="btn btn-default btn-danger btn-xs">
+                  <i className="mdi mdi-cancel"></i>
+                </button>
+              </div>
+            </div>
+          </div>);
     }
 
     return (
