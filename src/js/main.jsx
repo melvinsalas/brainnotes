@@ -26,21 +26,21 @@ class MainContainer extends React.Component {
           <div className="row">
             <div id="section-side" className="col-sm-3 transition section">
               <div className = "row">
-                <Route exact path = "/notes" render = { (props) => (
+                <Route path = "/notes" render = { (props) => (
                   <Section
                     key = { noteSection.id }
                     displayed = { false }
                     { ...noteSection }
                     data = { data.notes } />
                 )}/>
-                <Route exact path = "/notebooks" render = { (props) => (
+                <Route path = "/notebooks" render = { (props) => (
                   <Section
                     key = {notebookSection.id}
                     displayed = { false }
                     {...notebookSection}
                     data = {data.notebooks} />
                 )}/>
-                <Route exact path = "/tags" render = { (props) => (
+                <Route path = "/tags" render = { (props) => (
                   <Section
                     key = {tagSection.id}
                     displayed = { false }

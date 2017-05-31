@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { Link } from 'react-router-dom'
 
 class SectionPanel extends React.Component {
   constructor () {
@@ -15,14 +16,14 @@ class SectionPanel extends React.Component {
 
     switch (sectionTitle) {
       case 'Notes':
-        value = <div onClick={()=>{displayContent(panel)}} className="note rounded"> { title } </div>;
+        value =  <div onClick={()=>{displayContent(panel)}} className="note rounded"> { title } </div> ;
         break;
       default:
         value = <div className="panel panel-default"><div className="panel-body"> { title } </div></div>;
     }
 
     return (
-        <div> { value } </div>
+        <div> <Link to='/notes/potato'> { value } </Link> </div>
     );
   }
 }
