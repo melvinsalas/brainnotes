@@ -20,7 +20,9 @@ class SectionPanel extends React.Component {
         break;
       default:
         value = (<div className="panel panel-default">
-            <div className="panel-body"> { title } </div>
+            <div className="panel-body">
+               <input type="text" className='panel-title panel-note-title pull-left heading-editable form-control' value={ title }/> 
+            </div>
             <div className="panel-footer clearfix">
               <div className="pull-right btn-group" role='group'>
                 <button onClick={''} className="btn btn-default btn-warning btn-xs">

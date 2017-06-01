@@ -1,19 +1,14 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter as Router, Route, Link, Redirect} from 'react-router-dom';
+import { Switch } from 'react-router';
 
 import Section from './section';
 import DisplaySection from './displaySection';
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom'
-import { Switch } from 'react-router'
-
 class MainContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = { }
   }
   render() {
@@ -26,6 +21,8 @@ class MainContainer extends React.Component {
           <div className="row">
             <div id="section-side" className={`col-sm-3 transition section ${(showMobileNote ? "hidden-xs" : "")}`}>
               <div className = "row">
+                <Route path='/' render={(props) => (<Redirect to="/notes"/>)}/>
+                
                 <Route path = "/notes" render = { (props) => (
                   <Section
                     key = { noteSection.id }

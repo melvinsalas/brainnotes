@@ -6,8 +6,8 @@ import NavSide from './navSide';
 import MainContainer from './main';
 
 class AppContainer extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       activeSection: 'section-notes',
       showMobileNote: false, 
@@ -89,7 +89,13 @@ class AppContainer extends React.Component {
       notebook: "",
       tags: []
     }
-    this.setState({activeNote:noteTemp}, this.startEdit.bind(this));
+    this.setState(
+      {
+        activeNote:noteTemp,
+        showMobileNote: true
+      }, 
+      this.startEdit.bind(this)
+      );
   }
 
   deleteNote() {
@@ -105,7 +111,9 @@ class AppContainer extends React.Component {
       .then(function (response) {
         console.log(noteList.indexOf(activeNote));
         noteList.splice(noteList.indexOf(activeNote), 1);
-        self.forceUpdate();
+        self.setState({
+          showMobileNote: false
+        });
       })
       .catch(function (error) {
         console.log(error);
@@ -157,7 +165,8 @@ class AppContainer extends React.Component {
     } else {
       this.setState({
         activeNote: null,
-        activeNoteBackUp: null
+        activeNoteBackUp: null,
+        showMobileNote: false
       });
     }
       this.stopEdit();
@@ -167,8 +176,9 @@ class AppContainer extends React.Component {
   back() {
     this.cancelEdit();
     this.setState({
-        showMobileNote: false
-      });
+      showMobileNote: false
+    });
+
   }
 
   stopEdit(){
@@ -197,18 +207,8 @@ class AppContainer extends React.Component {
   }
 
   componentDidMount() {
-    // axios.put('http://localhost:7777/api/notes', {
-    //     _id: '592c93886e33392a88d4ea1a',
-    //     title: 'Pokemon title',
-    //     content: 'Pokemon Content'
-    // })
-    //   .then(function (response) {
-    //     console.log(JSON.stringify(response.data));
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-    
+    // console.log('History: ' + this.props.history);
+    // console.log('Location: ' + this.props.location);
   }
 
   render() {
