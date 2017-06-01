@@ -12,6 +12,6 @@ const tagSchema = new mongoose.Schema(
     }
 );
 
-const tag = mongoose.model('colors', tagSchema);
+const color = mongoose.model('colors', tagSchema);
 
 module.exports = color;

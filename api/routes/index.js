@@ -8,6 +8,7 @@ const note = require('./../models/note');
 const noteController = require('./../controllers/notesController');
 const notebookController = require('./../controllers/notebooksController');
 const tagController = require('./../controllers/tagsController');
+const colorController = require('./../controllers/colorsController');
 
 router.get('/', function (req, res) {
     res.send('Welcome to the BN api');
@@ -27,5 +28,10 @@ router.post('/tags', tagController.add);
 router.get('/tags', tagController.get);
 router.delete('/tags', tagController.fuckThis);
 router.put('/tags', tagController.update);
+
+router.post('/colors', colorController.add);
+router.get('/colors', colorController.get);
+router.delete('/colors', colorController.fuckThis);
+router.put('/colors', colorController.update);
 
 module.exports = router;
