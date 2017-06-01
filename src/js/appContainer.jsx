@@ -112,6 +112,8 @@ class AppContainer extends React.Component {
         console.log(noteList.indexOf(activeNote));
         noteList.splice(noteList.indexOf(activeNote), 1);
         self.setState({
+          activeNote: null,
+          activeNoteBackUp: null,
           showMobileNote: false
         });
       })
