@@ -21,9 +21,7 @@ class App extends React.Component {
         <div className='app'>
           <Route path='/' render={
             (props) => (
-              <AppContainer
-                activeSection="section-notes"
-              />
+              <AppContainer/>
             )}
           />
         </div>
