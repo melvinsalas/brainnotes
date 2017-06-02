@@ -11,7 +11,7 @@ class Section extends React.Component {
   }
 
   render () {
-    const { id, sectionTitle, array, data, displayContent, newNote, displayed } = this.props;
+    const { id, sectionTitle, data, displayContent, newNote, displayed } = this.props;
     return (
         <div id={id} className={"col-md-12 transition " + ((displayed)?"hide2":"")}>
             <div className="panel panel-default">
@@ -22,14 +22,13 @@ class Section extends React.Component {
                     </div>
                 </div>
                 <div id="holder-notes" className="panel-body section-notes">
-                    {array.map((panel)=>{
+                    {data.map((panel)=>{
                         return (
                             <SectionPanel 
-                                data = { data }
-                                key = { panel._id }
+                                key={panel._id}
                                 sectionTitle = { sectionTitle }
-                                displayContent = { displayContent }
-                                panel = { panel }
+                                displayContent={displayContent}
+                                panel={panel}
                             />
                         )
                     })}

@@ -2,6 +2,8 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Link } from 'react-router-dom'
 
+import TagEditor from './tagEditor';
+
 class SectionPanel extends React.Component {
   constructor () {
     super();
@@ -10,13 +12,19 @@ class SectionPanel extends React.Component {
   }
 
   render () {
-    const { panel, sectionTitle, displayContent } = this.props,
-          {title} = panel;
+    const { panel, sectionTitle, displayContent, data } = this.props,
+          { title } = panel;
     let value = null;
-
     switch (sectionTitle) {
       case 'Notes':
         value =  <div onClick={()=>{displayContent(panel)}} className="note rounded"> { title } </div> ;
+        break;
+      case 'Tags':
+          value = (                            
+            <TagEditor
+              panel = { panel }
+              colors = { data.colors } />
+          );
         break;
       default:
         value = (<div className="panel panel-default">

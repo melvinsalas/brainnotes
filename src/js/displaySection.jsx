@@ -11,7 +11,6 @@ class DisplaySection extends React.Component {
 
     render() {
         const { activeNote, editable, deleteNote, startEdit, saveEdit, cancelEdit, back, handleTitleChange, handleContentChange, tags, showMobileNote } = this.props;
-        console.log('(DisplaySection) showMobileNote:' + showMobileNote);
         return (
             <div id="section-main" className={`col-sm-9 section ${showMobileNote ? "": "hidden-xs"}`}>
                 <div id="panel-editable" className={"panel panel-default " + ((editable) ? "editable" : "")}>

@@ -46,6 +46,7 @@ class AppContainer extends React.Component {
         notes: [],
         notebooks: [],
         tags: [],
+        colors: []
       }
     }
   }
@@ -192,14 +193,13 @@ class AppContainer extends React.Component {
     this.summon('notes');
     this.summon('notebooks');
     this.summon('tags');
+    this.summon('colors');
   }
 
   summon(sCollection) {
     let self = this;
-
     axios.get(`http://localhost:7777/api/${sCollection}`)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
         self.state.data[sCollection] = response.data;
         self.forceUpdate();
       })

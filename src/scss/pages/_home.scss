@@ -74,3 +74,11 @@
 .panel-heading.clearfix>h4 {
   padding: 8px;
 }
+
+.radio-toolbar input[type="radio"] {
+  display: none;
+}
+
+.radio-toolbar span {
+  margin-right: 2px;
+}

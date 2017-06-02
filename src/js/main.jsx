@@ -21,28 +21,31 @@ class MainContainer extends React.Component {
           <div className="row">
             <div id="section-side" className={`col-sm-3 transition section ${(showMobileNote ? "hidden-xs" : "")}`}>
               <div className = "row">
-                <Route path='/' render={(props) => (<Redirect to="/notes"/>)}/>
+                <Route exact path='/' render={(props) => (<Redirect to="/notes"/>)}/>
                 
                 <Route path = "/notes" render = { (props) => (
                   <Section
                     key = { noteSection.id }
                     displayed = { false }
                     { ...noteSection }
-                    data = { data.notes } />
+                    array = { data.notes } 
+                    data = { data }/>
                 )}/>
                 <Route path = "/notebooks" render = { (props) => (
                   <Section
                     key = {notebookSection.id}
                     displayed = { false }
                     {...notebookSection}
-                    data = {data.notebooks} />
+                    array = { data.notebooks }
+                    data = { data } />
                 )}/>
                 <Route path = "/tags" render = { (props) => (
                   <Section
                     key = {tagSection.id}
                     displayed = { false }
                     {...tagSection}
-                    data = {data.tags}/>
+                    array = { data.tags }
+                    data = { data }/>
                 )}/>
               </div>
             </div>
@@ -57,7 +60,6 @@ class MainContainer extends React.Component {
               back={back}
               handleTitleChange={handleTitleChange}
               handleContentChange={handleContentChange}
-              tags={data.tags}
               showMobileNote={showMobileNote}
             />
           </div>
